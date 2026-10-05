@@ -1,0 +1,105 @@
+@import "tailwindcss";
+
+/* Design tokens. Light by default, dark follows the system. */
+:root {
+  --bg: #ffffff;
+  --fg: #0a0a0a;
+  --muted: #5c6164;
+  --line: #e3e3e3;
+  --soft: #f4f4f2;
+  --accent: #307a70;
+  --on-accent: #ffffff;
+  --surface: #ffffff;
+  --ink: #0a0a0a;
+  --ink-2: #307a70;
+  --tint: #dcebe8;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #0c0e0e;
+    --fg: #f2f2f2;
+    --muted: #a3a8aa;
+    --line: #262b2b;
+    --soft: #151919;
+    --accent: #4aa595;
+    --on-accent: #06130f;
+    --surface: #151919;
+    --ink: #12302b;
+    --ink-2: #5fc2b2;
+    --tint: #17302c;
+    color-scheme: dark;
+  }
+}
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-fg: var(--fg);
+  --color-muted: var(--muted);
+  --color-line: var(--line);
+  --color-soft: var(--soft);
+  --color-accent: var(--accent);
+  --color-on-accent: var(--on-accent);
+  --color-surface: var(--surface);
+  --color-ink: var(--ink);
+  --color-ink-2: var(--ink-2);
+  --color-tint: var(--tint);
+
+  --font-display: var(--font-josefin), "DM Sans", system-ui, sans-serif;
+  --font-sans: var(--font-dm-sans), system-ui, sans-serif;
+
+  --animate-sway: sway 6s ease-in-out infinite;
+  --animate-blink: blink 2s ease-in-out infinite;
+  --animate-grow: grow 2.2s ease-in-out infinite alternate;
+  --animate-pop: pop 3s ease-in-out infinite;
+  --animate-float: float 5s ease-in-out infinite;
+  --animate-cursor: cursor 6s ease-in-out infinite;
+  --animate-ripple: ripple 3s ease-out infinite;
+
+  @keyframes sway {
+    50% { transform: rotate(-3deg) translateY(-8px); }
+  }
+  @keyframes blink {
+    50% { opacity: 0.35; }
+  }
+  @keyframes grow {
+    from { height: calc(var(--h) * 0.45); }
+    to { height: var(--h); }
+  }
+  @keyframes pop {
+    0%, 60%, 100% { transform: scale(1); }
+    10% { transform: scale(1.2); }
+  }
+  @keyframes float {
+    50% { transform: translateY(-10px); }
+  }
+  @keyframes cursor {
+    0%, 100% { transform: translate(0, 0) rotate(-25deg); }
+    40% { transform: translate(-90px, -50px) rotate(-25deg); }
+    70% { transform: translate(-40px, 20px) rotate(-25deg); }
+  }
+  @keyframes ripple {
+    0% { transform: scale(1); opacity: 0.6; }
+    100% { transform: scale(1.7); opacity: 0; }
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 84px;
+}
+
+body {
+  background: var(--bg);
+  color: var(--fg);
+  overflow-x: hidden;
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+}
